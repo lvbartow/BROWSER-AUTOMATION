@@ -1,0 +1,9 @@
+grammar org.project.browserautomation.Bad with org.eclipse.xtext.common.Terminals
+
+generate bad "http://www.project.org/browserautomation/Bad"
+
+Model:
+	greetings+=Greeting*;
+	
+Greeting:
+	'Hello' name=ID '!';
