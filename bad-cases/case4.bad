@@ -1,0 +1,4 @@
+NAV_TO http://www.imt-atlantique.fr/fr
+FILL_FIELD NAME 'recherche' VALUE 'Donald Trump'
+CLICK_ON BUTTON 'Appliquer les filtres'
+CHECK_EXISTS TEXT 'Aucun résultat ne correspond à votre recherche'

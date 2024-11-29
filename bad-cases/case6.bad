@@ -1,0 +1,5 @@
+NAV_TO http://www.imt-atlantique.fr/fr/rechercher
+FILL_FIELD NAME 'Recherche' VALUE '2006'
+CLICK_ON COMBO 'combobox' VALUE 'Le mois dernier'
+CLICK_ON BUTTON "Appliquer les filtres"
+CHECK_EXISTS TEXT "Aucun résultat ne correspond à votre recherche"

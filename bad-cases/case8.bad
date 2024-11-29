@@ -1,0 +1,7 @@
+NAV_TO http://www.imt-atlantique.fr/fr
+STORE_ELEMENT POS 2 FROM 'actuhomeajax' PROP 'url' IN VAR 'second_news_url'
+STORE_ELEMENT POS 2 FROM 'actuhomeajax' PROP 'title' IN VAR 'second_news_title'
+NAV_TO http://www.imt-atlantique.fr/fr/rechercher
+FILL_FIELD NAME 'recherche' VALUE FROM VAR 'second_news_title'
+CLICK_ON BUTTON 'Appliquer les filtres'
+CHECK_EXISTS LINK FROM VAR 'second_news_url'

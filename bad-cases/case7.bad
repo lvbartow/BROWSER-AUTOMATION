@@ -1,0 +1,4 @@
+NAV_TO http://www.imt-atlantique.fr/fr
+STORE_ELEMENT POS 1 FROM 'actuhomeajax' PROP 'title' IN VAR 'first_news_title'
+CLICK_ON LINK 'first_news_title'
+CHECK_EXISTS TEXT FROM VAR 'first_news_title'

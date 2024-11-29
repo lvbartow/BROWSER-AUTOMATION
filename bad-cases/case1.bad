@@ -1,0 +1,2 @@
+NAV_TO http://www.imt-atlantique.fr/fr
+CHECK_EXISTS LINK 'Toutes les actualités'

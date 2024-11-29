@@ -1,0 +1,5 @@
+NAV_TO http://www.imt-atlantique.fr/fr/formation/trouver-ma-formation
+CHECKBOX_ACTION FALSE ALL
+CHECKBOX_ACTION TRUE 'Anglais'  'A domicile' 'Temps plein'
+CLICK_ON BUTTON 'Appliquer les critères'
+CHECK_EXISTS TEXT 'No found course matching your criteria.'
