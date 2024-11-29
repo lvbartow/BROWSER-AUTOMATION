@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="bad" nsURI="http://www.project.org/browserautomation/Bad" nsPrefix="bad">
+  <eClassifiers xsi:type="ecore:EClass" name="Program">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="instructions" upperBound="-1"
+        eType="#//Instruction" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Instruction"/>
+  <eClassifiers xsi:type="ecore:EClass" name="NavigateToUrl" eSuperTypes="#//Instruction">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="url" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CheckExists" eSuperTypes="#//Instruction">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="#//ElemType"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="varname" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ClickOn" eSuperTypes="#//Instruction">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="#//ClickType"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="varname" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="pos_index" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id_combo" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="to_select" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CheckboxAction" eSuperTypes="#//Instruction">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="bool" eType="#//BoolString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="actions" unique="false"
+        upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="FillField" eSuperTypes="#//Instruction">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="varname" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="StoreElement" eSuperTypes="#//Instruction">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="pos_index" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id_from" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="prop_name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="varname" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="ClickType">
+    <eLiterals name="BUTTON" literal="BUTTON"/>
+    <eLiterals name="LINK" value="1" literal="LINK"/>
+    <eLiterals name="IMAGE" value="2" literal="IMAGE"/>
+    <eLiterals name="COMBO" value="3" literal="COMBO"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="ElemType">
+    <eLiterals name="LINK" literal="LINK"/>
+    <eLiterals name="TEXT" value="1" literal="TEXT"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="BoolString">
+    <eLiterals name="TRUE" literal="TRUE"/>
+    <eLiterals name="FALSE" value="1" literal="FALSE"/>
+  </eClassifiers>
+</ecore:EPackage>

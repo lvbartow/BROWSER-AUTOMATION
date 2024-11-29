@@ -2,8 +2,57 @@ grammar org.project.browserautomation.Bad with org.eclipse.xtext.common.Terminal
 
 generate bad "http://www.project.org/browserautomation/Bad"
 
-Model:
-	greetings+=Greeting*;
+Program:
+	instructions+=Instruction*;
+
+Instruction:
+	NavigateToUrl | ClickOn | FillField | CheckExists | CheckboxAction | StoreElement
+;
+
+NavigateToUrl:
+	'NAV_TO' url=URL;
 	
-Greeting:
-	'Hello' name=ID '!';
+CheckExists:
+	'CHECK_EXISTS' type=ElemType id=STRING
+	|
+	"CHECK_EXISTS" type=ElemType "FROM" "VAR" varname=STRING
+;
+
+ClickOn:
+	'CLICK_ON' type=ClickType (id=STRING | "VAR" + varname=STRING)
+	| 
+	'CLICK_ON' type=ClickType "POS" pos_index=INT "IN" id=STRING
+	|
+	'CLICK_ON' type=ClickType id_combo=STRING "VALUE" to_select=STRING
+	; 
+
+CheckboxAction:
+	"CHECKBOX_ACTION" bool=BoolString ("ALL" | actions+=STRING*)
+;
+
+FillField:
+	'FILL_FIELD' "NAME" id=STRING "VALUE" (value=STRING | "FROM" "VAR" varname=STRING)
+;
+
+StoreElement:
+	"STORE_ELEMENT" "POS" pos_index=INT "FROM" id_from=STRING "PROP" prop_name=STRING "IN" "VAR" varname=STRING 
+	|
+	"STORE_ELEMENT" "FROM" id_from=STRING "PROP" prop_name=STRING "IN" "VAR" varname=STRING
+	
+;
+
+enum ClickType:
+	BUTTON="BUTTON" | LINK="LINK" | IMAGE="IMAGE" | COMBO="COMBO";
+	
+enum ElemType:
+	LINK="LINK" | TEXT="TEXT"
+;
+
+enum BoolString:
+	TRUE="TRUE" | FALSE="FALSE"
+;
+
+terminal URL:
+    'http' 's'? '://' ('www.')? ('-'|'.'|'+'|'~'|'#'|'='|'%'|'_'|'@'|':'|'a'..'z'|'A'..'Z'|'0..9')+
+    '.' ('a'..'z' | 'A'..'Z' | '0'..'9' | '(' | ')')+
+    (('-' | '.' | '+' | '~' | '#' | '=' | '%' | '_' | '@' | ':' | '/' | '?' | '&' | 'a'..'z' | 'A'..'Z' | '0'..'9' | '(' | ')')* );

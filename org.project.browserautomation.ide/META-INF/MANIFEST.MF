@@ -8,5 +8,8 @@ Bundle-SymbolicName: org.project.browserautomation.ide; singleton:=true
 Bundle-ActivationPolicy: lazy
 Require-Bundle: org.project.browserautomation,
  org.eclipse.xtext.ide,
- org.eclipse.xtext.xbase.ide
+ org.eclipse.xtext.xbase.ide,
+ org.antlr.runtime;bundle-version="[3.2.0,3.2.1)"
 Bundle-RequiredExecutionEnvironment: JavaSE-21
+Export-Package: org.project.browserautomation.ide.contentassist.antlr,
+ org.project.browserautomation.ide.contentassist.antlr.internal
