@@ -19,6 +19,7 @@ import org.project.browserautomation.bad.FillField
 import org.project.browserautomation.bad.CheckboxAction
 import org.project.browserautomation.bad.BoolString
 import org.project.browserautomation.bad.StoreElement
+import java.nio.file.Files
 
 /**
  * Generates code from your model files on save.
@@ -28,10 +29,15 @@ import org.project.browserautomation.bad.StoreElement
 class BadGenerator extends AbstractGenerator {
 
 	override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
-		var program = resource.contents.head as Program
-		var sep = File.separator
-		var filePath = 'bad'+sep+'Case.java';
-		fsa.generateFile(filePath, program.generateProgram)
+    	resource.resourceSet.resources.forEach[res |
+        if (res.contents.head instanceof Program) {
+            val program = res.contents.head as Program
+            val sep = File.separator
+            val fileName = res.URI.trimFileExtension.lastSegment
+            val filePath = 'generated' + sep + fileName + '.java'
+            fsa.generateFile(filePath, program.generateProgram)
+        }
+    ]
 	}
 	
 	def generateProgram(Program pgm) '''

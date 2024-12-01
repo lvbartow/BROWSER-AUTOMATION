@@ -5,6 +5,7 @@ package org.project.browserautomation.generator;
 
 import java.io.File;
 import java.util.Objects;
+import java.util.function.Consumer;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
@@ -34,11 +35,18 @@ import org.project.browserautomation.bad.StoreElement;
 public class BadGenerator extends AbstractGenerator {
   @Override
   public void doGenerate(final Resource resource, final IFileSystemAccess2 fsa, final IGeneratorContext context) {
-    EObject _head = IterableExtensions.<EObject>head(resource.getContents());
-    Program program = ((Program) _head);
-    String sep = File.separator;
-    String filePath = (("bad" + sep) + "Case.java");
-    fsa.generateFile(filePath, this.generateProgram(program));
+    final Consumer<Resource> _function = (Resource res) -> {
+      EObject _head = IterableExtensions.<EObject>head(res.getContents());
+      if ((_head instanceof Program)) {
+        EObject _head_1 = IterableExtensions.<EObject>head(res.getContents());
+        final Program program = ((Program) _head_1);
+        final String sep = File.separator;
+        final String fileName = res.getURI().trimFileExtension().lastSegment();
+        final String filePath = ((("generated" + sep) + fileName) + ".java");
+        fsa.generateFile(filePath, this.generateProgram(program));
+      }
+    };
+    resource.getResourceSet().getResources().forEach(_function);
   }
 
   public CharSequence generateProgram(final Program pgm) {
